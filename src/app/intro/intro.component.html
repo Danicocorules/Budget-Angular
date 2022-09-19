@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-body">
+        <h3>Introduce your budget</h3>
+        <form [formGroup]="budgetForm" (ngSubmit)="getBudget(budgetForm.value.budget)">
+          <input type="text"
+                 class="form-control"
+                 id="introBudget"
+                 formControlName="budget">
+          <div class="float-none">
+            <p class="form-text text-danger"
+               *ngIf="validate('budget')">
+                You must enter a valid budget</p>
+          </div>
+          <button type="submit" class="btn btn-primary float-end">Add Budget</button>
+        </form>
+<!--
+        <p> Valid:</p>
+        <p> {{budgetForm.valid}}</p>
+        <p> touched:</p>
+        <p> {{budgetForm.touched}}</p>
+        <p> Value:</p>
+        <p> {{budgetForm.value | json}}</p> -->
+
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+      <app-current-budget [budgetRecibed]='budgetIntro'></app-current-budget>
+    </div>
+</div>
