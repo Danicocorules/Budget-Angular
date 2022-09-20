@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { billForm } from '../interfaces/bill.interface'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationsService } from '../services/validations/validations.service';
@@ -10,10 +10,9 @@ import { CounterService } from '../services/counter/counter.service'
   styleUrls: ['./form-expense.component.css']
 })
 
-export class FormExpenseComponent implements OnInit {
+export class FormExpenseComponent {
 
   numberRegEx = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
-
   billsAmount: billForm[] = [];
 
   constructor( private fb: FormBuilder,
@@ -24,9 +23,6 @@ export class FormExpenseComponent implements OnInit {
     spent: [ , [Validators.required]],
     quantity: [ , [Validators.required, Validators.pattern(this.numberRegEx), Validators.min(1)]]
   })
-
-  ngOnInit(): void {
-  }
 
   addBill() {
 
@@ -44,7 +40,6 @@ export class FormExpenseComponent implements OnInit {
       this.billsForm.controls['spent'].enable();
       this.billsForm.controls['quantity'].enable();
     }
-
 
     const newBill: billForm = {
       spent : this.billsForm.value.spent,

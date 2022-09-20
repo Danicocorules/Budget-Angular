@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidationsService } from '../services/validations/validations.service';
@@ -9,7 +9,7 @@ import { CounterService } from '../services/counter/counter.service';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.css']
 })
-export class IntroComponent implements OnInit {
+export class IntroComponent {
 
   budgetIntro!: number;
   budgetCurrent!: number;
@@ -23,9 +23,6 @@ export class IntroComponent implements OnInit {
   budgetForm: FormGroup = this.fb.group({
     budget: [this.budgetIntro, [ Validators.required, Validators.pattern(this.numberRegEx), Validators.min(1) ]],
   })
-
-  ngOnInit(): void {
-  }
 
   getBudget( budget:number ) {
 

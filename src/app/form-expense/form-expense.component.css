@@ -2,4 +2,11 @@ p.msg-negative {
   border: 2px solid #ff9eaa;
   padding: 10px;
   border-radius: 7px;
+  background-color: #f8eaea;
+}
+p.msg-info {
+  border: 2px solid #ffdeae;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #fff3e1;
 }
