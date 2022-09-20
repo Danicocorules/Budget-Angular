@@ -2,3 +2,8 @@
     font-size: 2rem;
     font-weight: 200;
 }
+.negative-budget {
+  background-color: #f8eaea;
+  border: 1px solid red;
+  border-radius: 5px;
+}

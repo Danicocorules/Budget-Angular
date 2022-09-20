@@ -21,8 +21,8 @@
           <label for="quantity" class="form-label">Quantity:</label>
           <div class="form-field">
             <input type="text"
-                  class="form-control" id="quantity"
-                  formControlName="quantity">
+                   class="form-control" id="quantity"
+                   formControlName="quantity">
             <p class="form-text text-danger"
               *ngIf="validate('quantity')">
               You must enter a valid quantity.</p>
@@ -37,6 +37,7 @@
     <div class="card">
       <div class="card-body">
         <h4>List</h4>
+        <p class="msg-info" *ngIf="billsAmount.length === 0">There's no expenses added yet</p>
         <app-bill-card [listBills]="billsAmount" (deletedBill)="deleteBill($event)"></app-bill-card>
       </div>
     </div>

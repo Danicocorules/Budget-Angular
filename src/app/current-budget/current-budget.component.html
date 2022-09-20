@@ -11,7 +11,8 @@
       </div>
       <div class="col-6">
           <div class="card">
-            <div class="card-body text-center">
+            <div class="card-body text-center"
+                 [ngClass]=" 0 > counterServ.remainingBudget ? 'negative-budget' : '' ">
               <h5>Current budget:</h5>
               <p class="current-budget">{{ counterServ.remainingBudget }}$</p>
             </div>
