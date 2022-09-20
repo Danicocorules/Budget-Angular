@@ -2,22 +2,42 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h3>Add your expenses here</h3>
-        <form>
-          <label for="spent" class="form-label">Spent:</label>
-          <input type="text" class="form-control" id="spent">
+        <h4>Add your expenses here</h4>
+        <p class="msg-negative"
+           *ngIf="0 >= counterServ.remainingBudget">
+           You are in negative, you have to delete some expense to add another.
+        </p>
+        <form [formGroup]="billsForm"
+              (ngSubmit)="addBill()">
+          <div class="form-field mb-3">
+            <label for="spent" class="form-label">Spent:</label>
+            <input type="text"
+                   class="form-control" id="spent"
+                   formControlName="spent">
+            <p class="form-text text-danger"
+                *ngIf="validate('spent')">
+                You must put a concept to your invoice.</p>
+          </div>
           <label for="quantity" class="form-label">Quantity:</label>
-          <input type="text" class="form-control" id="quantity">
-          <button type="submit" class="btn btn-primary float-end">Add Bill</button>
+          <div class="form-field">
+            <input type="text"
+                  class="form-control" id="quantity"
+                  formControlName="quantity">
+            <p class="form-text text-danger"
+              *ngIf="validate('quantity')">
+              You must enter a valid quantity.</p>
+            <button type="submit" class="btn btn-primary float-end mt-4"
+                    [disabled]="billsForm.invalid">Add Bill</button>
+          </div>
         </form>
-
       </div>
     </div>
   </div>
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h3>List</h3>
+        <h4>List</h4>
+        <app-bill-card [listBills]="billsAmount" (deletedBill)="deleteBill($event)"></app-bill-card>
       </div>
     </div>
   </div>

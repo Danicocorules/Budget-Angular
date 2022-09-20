@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ValidationsService } from '../services/validations/validations.service';
+import { CounterService } from '../services/counter/counter.service';
+
 @Component({
   selector: 'app-intro',
   templateUrl: './intro.component.html',
@@ -9,9 +12,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class IntroComponent implements OnInit {
 
   budgetIntro!: number;
+  budgetCurrent!: number;
+
   numberRegEx = /^[+]?([.]\d+|\d+([.]\d+)?)$/;
 
-  constructor( private fb: FormBuilder ) {}
+  constructor( private fb: FormBuilder,
+               private validationsServ: ValidationsService,
+               private counterServ: CounterService ) {}
 
   budgetForm: FormGroup = this.fb.group({
     budget: [this.budgetIntro, [ Validators.required, Validators.pattern(this.numberRegEx), Validators.min(1) ]],
@@ -22,18 +29,15 @@ export class IntroComponent implements OnInit {
 
   getBudget( budget:number ) {
 
-    console.log(typeof(budget));
-
       this.budgetIntro = Number(budget);
-      console.log(typeof(this.budgetIntro));
-      console.log('asdsadasd');
+      this.budgetCurrent = Number(budget);
+      this.counterServ.remainingBudget = this.budgetIntro;
+      this.budgetForm.controls['budget'].disable();
 
   }
 
   validate( field: string ) {
-
-    return this.budgetForm.controls[field].touched && this.budgetForm.controls[field].errors
-
+    return this.validationsServ.validationForm( this.budgetForm, field );
   }
 
 }

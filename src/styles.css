@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   height: 100%;
-  background: linear-gradient(213deg, #43cba8, #a9b810);
+  background: linear-gradient(120deg, #ebfffa, #a9b810);
   background-size: 400% 400%;
   padding: 15px;
   font-family: 'Raleway', sans-serif;
 }
-
-input,
-h3 {
+h4 {
   margin-bottom: 1.75rem;
+}
+.card {
+  box-shadow: -1px 1px 5px #d8d8d8;
 }

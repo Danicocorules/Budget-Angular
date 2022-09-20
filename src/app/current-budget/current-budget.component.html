@@ -1,10 +1,22 @@
 <div class="row">
   <div class="col-12">
-    <div class="card">
-      <div class="card-body text-center">
-        <p>Your current budget is:</p>
-        <p class="current-budget">{{ 0 || budgetRecibed }}$</p>
+    <div class="row">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body text-center">
+            <h5>Initial budget:</h5>
+            <p class="current-budget">{{ budgetRecibed }}$</p>
+          </div>
+        </div>
       </div>
+      <div class="col-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5>Current budget:</h5>
+              <p class="current-budget">{{ counterServ.remainingBudget }}$</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

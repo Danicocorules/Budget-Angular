@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CounterService } from '../services/counter/counter.service';
 
 @Component({
   selector: 'app-current-budget',
@@ -9,8 +10,9 @@ export class CurrentBudgetComponent implements OnInit {
 
 
   @Input() budgetRecibed: number = 0;
+  @Input() currentBudget: number = 0;
 
-  constructor() {
+  constructor( public counterServ: CounterService ) {
    }
 
   ngOnInit(): void {
